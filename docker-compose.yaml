@@ -1,0 +1,19 @@
+version: '3'
+x-environment: &environment
+  CELERY_BROKER_URL: "redis://redis:6379/0"
+  CELERY_RESULT_BACKEND_URL: "redis://redis:6379/1"
+services:
+  worker:
+    build: .
+    command: celery -A app:app worker -P gevent -l INFO --logfile /dev/stdout -c 100
+    environment: 
+      << : *environment
+  runner:
+    build: .
+    command: python3 run.py
+    environment: 
+      << : *environment
+  redis:
+    image: "redis:6.2.6-alpine"
+    ports:
+    - '6379:6379'
