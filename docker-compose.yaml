@@ -6,6 +6,9 @@ services:
   worker:
     build: .
     command: celery -A app:app worker -P gevent -l INFO --logfile /dev/stdout -c 100
+    volumes:
+    - ./:/usr/src/app
+    working_dir: /usr/src/app
     environment: 
       << : *environment
   runner:
@@ -13,6 +16,9 @@ services:
     command: python3 run.py
     environment: 
       << : *environment
+    volumes:
+    - ./:/usr/src/app
+    working_dir: /usr/src/app
   redis:
     image: "redis:6.2.6-alpine"
     ports:
