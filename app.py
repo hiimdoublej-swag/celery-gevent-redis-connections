@@ -6,7 +6,8 @@ import celery
 app = celery.Celery()
 app.conf.update({
     'broker_url': os.environ.get('CELERY_BROKER_URL'),
-    'result_backend': os.environ.get('CELERY_RESULT_BACKEND_URL')
+    'result_backend': os.environ.get('CELERY_RESULT_BACKEND_URL'),
+    'result_backend_thread_safe': bool(os.environ.get('CELERY_RESULT_BACKEND_THREAD_SAFE')),
 })
 
 @celery.shared_task(bind=True)
