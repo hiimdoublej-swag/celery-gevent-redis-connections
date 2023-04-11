@@ -8,6 +8,7 @@ services:
     command: celery -A app:app worker -P gevent -l INFO --logfile /dev/stdout -c 100
     volumes:
     - ./:/usr/src/app
+    - /Users/johnny/dev/celery/celery:/usr/local/lib/python3.10/site-packages/celery
     working_dir: /usr/src/app
     environment: 
       << : *environment
@@ -18,6 +19,7 @@ services:
       << : *environment
     volumes:
     - ./:/usr/src/app
+    - /Users/johnny/dev/celery/celery:/usr/local/lib/python3.10/site-packages/celery
     working_dir: /usr/src/app
   redis:
     image: "redis:6.2.6-alpine"

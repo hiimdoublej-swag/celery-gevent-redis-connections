@@ -17,4 +17,4 @@ def nested(task):
 @celery.shared_task(bind=True)
 def outer(task):
     result = nested.apply_async().get(timeout=10)
-    return result
+    # return result
