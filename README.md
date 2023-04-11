@@ -1,3 +1,7 @@
+Update 2023-04-11:
+The problem seems to go away by setting `result_backend_thread_safe` to `True`.
+The connections stayed at 24.
+
 The repository contains a reproducible case of the celery/redis/gevent connection leak bug [as described here](https://github.com/celery/celery/issues/6819)
 
 Steps to reproduce:
