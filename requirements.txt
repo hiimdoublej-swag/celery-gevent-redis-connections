@@ -1,6 +1,5 @@
 celery[redis]==5.3.6
-hiredis==2.3.2
+kombu==5.3.4
 redis==5.0.0
-# redis==3.2.0
-kombu==5.3.0b3
-gevent==22.10.2
+hiredis==2.3.2
+gevent==23.9.1
