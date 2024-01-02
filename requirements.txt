@@ -1,3 +1,6 @@
-celery[redis]==5.3.0b2
+celery[redis]==5.3.6
+hiredis==2.3.2
+redis==5.0.0
+# redis==3.2.0
 kombu==5.3.0b3
 gevent==22.10.2
