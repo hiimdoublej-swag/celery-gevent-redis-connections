@@ -1,8 +1,7 @@
-version: '3'
 x-environment: &environment
   CELERY_BROKER_URL: "redis://redis:6379/0"
   CELERY_RESULT_BACKEND_URL: "redis://redis:6379/1"
-  CELERY_RESULT_BACKEND_THREAD_SAFE: 1
+  # CELERY_RESULT_BACKEND_THREAD_SAFE: 1
 services:
   worker:
     build: .
@@ -12,6 +11,8 @@ services:
     working_dir: /usr/src/app
     environment: 
       << : *environment
+    depends_on:
+    - redis
   runner:
     build: .
     command: python3 run.py
@@ -20,6 +21,8 @@ services:
     volumes:
     - ./:/usr/src/app
     working_dir: /usr/src/app
+    depends_on:
+    - redis
   redis:
     image: "redis:7.2.5-alpine"
     ports:
