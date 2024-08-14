@@ -21,6 +21,6 @@ services:
     - ./:/usr/src/app
     working_dir: /usr/src/app
   redis:
-    image: "redis:6.2.6-alpine"
+    image: "redis:7.2.5-alpine"
     ports:
     - '6379:6379'
