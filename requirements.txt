@@ -1,5 +1,5 @@
-celery[redis]==5.3.6
-kombu==5.3.4
-redis==5.0.0
+celery[redis]==5.4.0
+kombu==5.4.0
+redis==5.0.8
 hiredis==2.3.2
-gevent==23.9.1
+gevent==24.2.1
